@@ -1,5 +1,7 @@
+
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -25,13 +27,24 @@ const Hero = () => {
           <div className="animate-fade-in">
             {/* Profile Image */}
             <div className="mb-8">
-              <div className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-primary glow-effect">
-                <img 
-                  src="/lovable-uploads/92bee190-ba54-4db5-852e-6d2ae8080f2a.png" 
-                  alt="Mohan S - Web Developer" 
-                  className="w-full h-full object-cover" 
-                />
-              </div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <div className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-primary glow-effect cursor-pointer hover:scale-105 transition-transform duration-300">
+                    <img 
+                      src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" 
+                      alt="Mohan S - Web Developer" 
+                      className="w-full h-full object-cover" 
+                    />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl">
+                  <img 
+                    src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" 
+                    alt="Mohan S - Web Developer" 
+                    className="w-full h-auto rounded-lg" 
+                  />
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Name and Title */}
