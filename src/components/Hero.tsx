@@ -1,7 +1,8 @@
 
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -12,6 +13,7 @@ const Hero = () => {
       });
     }
   };
+  
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
     if (element) {
@@ -20,68 +22,71 @@ const Hero = () => {
       });
     }
   };
+
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 pt-20">
-      <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="animate-fade-in">
-            {/* Profile Image */}
-            <div className="mb-8">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <div className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-primary glow-effect cursor-pointer hover:scale-105 transition-transform duration-300">
-                    <img 
-                      src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" 
-                      alt="Mohan S - Web Developer" 
-                      className="w-full h-full object-cover" 
-                    />
-                  </div>
-                </DialogTrigger>
-                <DialogContent className="max-w-2xl">
-                  <img 
-                    src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" 
-                    alt="Mohan S - Web Developer" 
-                    className="w-full h-auto rounded-lg" 
-                  />
-                </DialogContent>
-              </Dialog>
-            </div>
+    <Card className="bg-card/50 backdrop-blur-sm border-border glow-effect">
+      <CardContent className="p-6">
+        <div className="text-center space-y-4">
+          {/* Profile Image */}
+          <Dialog>
+            <DialogTrigger asChild>
+              <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-3 border-primary glow-effect cursor-pointer hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" 
+                  alt="Mohan S - Web Developer" 
+                  className="w-full h-full object-cover" 
+                />
+              </div>
+            </DialogTrigger>
+            <DialogContent className="max-w-2xl">
+              <img 
+                src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" 
+                alt="Mohan S - Web Developer" 
+                className="w-full h-auto rounded-lg" 
+              />
+            </DialogContent>
+          </Dialog>
 
-            {/* Name and Title */}
-            <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-primary to-teal-300 bg-clip-text text-transparent">
-              Mohan S
-            </h1>
-            <h2 className="text-2xl md:text-3xl font-medium text-muted-foreground mb-6">
-              Web Developer
-            </h2>
+          {/* Name and Title */}
+          <div>
+            <h1 className="text-2xl font-bold text-primary mb-1">Mohan S</h1>
+            <p className="text-muted-foreground text-sm">Web Developer</p>
+            <p className="text-xs text-muted-foreground mt-1">Bangalore, India</p>
+          </div>
 
-            {/* Tagline */}
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-              Motivated BCA graduate proficient in Flutter, Python, AWS and UI/UX design building scalable, secure software solutions
-            </p>
+          {/* Status Badge */}
+          <div className="flex justify-center">
+            <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+              Available for work
+            </Badge>
+          </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button 
-                size="lg" 
-                onClick={scrollToProjects} 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-lg font-medium transition-all duration-300 glow-effect"
-              >
-                View Portfolio
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                onClick={scrollToContact} 
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 rounded-lg font-medium transition-all duration-300"
-              >
-                Contact Me
-              </Button>
-            </div>
+          {/* Quick Bio */}
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Motivated BCA graduate proficient in Flutter, Python, AWS and UI/UX design building scalable, secure software solutions
+          </p>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col gap-2">
+            <Button 
+              size="sm" 
+              onClick={scrollToProjects} 
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              View Portfolio
+            </Button>
+            <Button 
+              size="sm" 
+              variant="outline" 
+              onClick={scrollToContact} 
+              className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+            >
+              Hire Me
+            </Button>
           </div>
         </div>
-      </div>
-    </section>
+      </CardContent>
+    </Card>
   );
 };
 

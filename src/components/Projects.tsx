@@ -2,120 +2,96 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Eye } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
       title: "Alternative of OTP",
       description: "Innovative facial-verification login system that replaces traditional OTP authentication with secure biometric verification.",
-      longDescription: "A cutting-edge authentication solution that leverages facial recognition technology to provide secure, password-free login experiences. The system integrates advanced computer vision algorithms with robust security measures.",
-      tech: ["React.js", "Python", "Flask", "Firebase", "Computer Vision", "Authentication"],
-      highlights: [
-        "Secure facial recognition authentication",
-        "Real-time face detection and verification",
-        "Firebase integration for user management",
-        "RESTful API architecture"
-      ],
-      image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      tech: ["React.js", "Python", "Flask", "Firebase", "Computer Vision"],
+      image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       category: "Web Application"
     },
     {
-      title: "Flutter-Based Mobile Application",
+      title: "Flutter Mobile App",
       description: "Cross-platform mobile application built with Flutter, featuring real-time database integration and responsive UI design.",
-      longDescription: "A comprehensive mobile solution developed using Flutter framework, showcasing modern mobile development practices with seamless user experience across iOS and Android platforms.",
-      tech: ["Flutter", "Dart", "Firebase", "Real-time Database", "Mobile UI/UX", "Cross-platform"],
-      highlights: [
-        "Cross-platform compatibility",
-        "Real-time data synchronization",
-        "Responsive and intuitive UI",
-        "Firebase backend integration"
-      ],
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      tech: ["Flutter", "Dart", "Firebase", "Mobile UI/UX"],
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       category: "Mobile Application"
     }
   ];
 
   return (
-    <section id="projects" className="py-20 px-4">
-      <div className="container mx-auto">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-xl text-muted-foreground">Showcasing my latest work and innovations</p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <Card 
-                key={project.title} 
-                className="bg-card/30 backdrop-blur-sm border-border hover:bg-card/50 transition-all duration-500 animate-fade-in group glow-effect"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <CardHeader className="p-0">
-                  <div className="relative overflow-hidden rounded-t-lg">
+    <section id="projects" className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-primary">My Works</h2>
+        <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+          View All
+        </Button>
+      </div>
+      
+      <div className="space-y-4">
+        {projects.map((project, index) => (
+          <Card 
+            key={project.title} 
+            className="bg-card/50 backdrop-blur-sm border-border hover:bg-card/70 transition-all duration-300 group"
+          >
+            <CardContent className="p-4">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 rounded-lg overflow-hidden bg-primary/10 flex items-center justify-center">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover"
                     />
-                    <div className="absolute top-4 left-4">
-                      <Badge variant="secondary" className="bg-primary/90 text-white">
+                  </div>
+                </div>
+                
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <h3 className="font-semibold text-primary text-sm">{project.title}</h3>
+                      <Badge variant="secondary" className="text-xs mt-1 bg-primary/20 text-primary">
                         {project.category}
                       </Badge>
                     </div>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="p-6">
-                  <CardTitle className="text-2xl mb-3 text-primary">{project.title}</CardTitle>
-                  
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  <div className="mb-4">
-                    <h4 className="font-semibold mb-2 text-sm uppercase tracking-wide text-primary">Key Features</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {project.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-center">
-                          <span className="w-2 h-2 bg-primary rounded-full mr-2 flex-shrink-0"></span>
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-2 text-sm uppercase tracking-wide text-primary">Tech Stack</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <Badge 
-                          key={tech} 
-                          variant="outline" 
-                          className="border-primary/30 text-primary hover:bg-primary/20"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
+                    <div className="flex gap-1">
+                      <Button size="sm" variant="ghost" className="h-6 w-6 p-0 hover:bg-primary/20">
+                        <Eye className="w-3 h-3" />
+                      </Button>
+                      <Button size="sm" variant="ghost" className="h-6 w-6 p-0 hover:bg-primary/20">
+                        <Github className="w-3 h-3" />
+                      </Button>
                     </div>
                   </div>
-
-                  <div className="flex gap-3">
-                    <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Demo
-                    </Button>
-                    <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                      <Github className="w-4 h-4 mr-2" />
-                      Source Code
-                    </Button>
+                  
+                  <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-1">
+                    {project.tech.slice(0, 3).map((tech) => (
+                      <Badge 
+                        key={tech} 
+                        variant="outline" 
+                        className="text-xs px-1 py-0 h-4 border-primary/30 text-primary"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                    {project.tech.length > 3 && (
+                      <Badge variant="outline" className="text-xs px-1 py-0 h-4 border-primary/30 text-primary">
+                        +{project.tech.length - 3}
+                      </Badge>
+                    )}
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </section>
   );
