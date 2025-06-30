@@ -7,92 +7,65 @@ const Skills = () => {
     {
       title: "Programming Languages",
       skills: ["Python", "Dart", "Java", "JavaScript"],
-      icon: "💻"
+      icon: "💻",
+      color: "from-blue-500/20 to-purple-500/20"
     },
     {
       title: "Mobile & Web Development", 
       skills: ["Flutter", "React.js", "HTML/CSS", "Responsive Design"],
-      icon: "📱"
+      icon: "📱",
+      color: "from-green-500/20 to-teal-500/20"
     },
     {
       title: "Cloud & DevOps",
       skills: ["AWS", "Kubernetes", "Docker", "CI/CD"],
-      icon: "☁️"
+      icon: "☁️",
+      color: "from-orange-500/20 to-red-500/20"
     },
     {
       title: "Databases",
       skills: ["MySQL", "Firebase", "NoSQL", "Database Design"],
-      icon: "🗄️"
-    }
-  ];
-
-  const otherSkills = [
+      icon: "🗄️",
+      color: "from-pink-500/20 to-rose-500/20"
+    },
     {
       title: "UI/UX Design",
       skills: ["User Experience", "Interface Design", "Prototyping", "Wireframing"],
-      icon: "🎨"
+      icon: "🎨",
+      color: "from-indigo-500/20 to-blue-500/20"
     },
     {
       title: "System Administration",
       skills: ["Linux", "System Configuration", "Command Line", "Shell Scripting"],
-      icon: "🐧"
+      icon: "🐧",
+      color: "from-yellow-500/20 to-orange-500/20"
     }
   ];
 
   return (
-    <section id="skills" className="space-y-6">
-      <h2 className="text-2xl font-bold text-primary">Skills & Expertise</h2>
-      
-      <div className="grid md:grid-cols-2 gap-4">
-        {skillCategories.map((category) => (
-          <Card 
-            key={category.title} 
-            className="bg-card/50 backdrop-blur-sm border-border hover:bg-card/70 transition-all duration-300"
-          >
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm flex items-center gap-2">
-                <span className="text-lg">{category.icon}</span>
-                {category.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-1">
-                {category.skills.map((skill) => (
-                  <Badge 
-                    key={skill} 
-                    variant="secondary" 
-                    className="text-xs bg-primary/20 text-primary border-primary/30"
-                  >
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      <div>
-        <h3 className="text-lg font-semibold mb-3 text-primary">Other Skills</h3>
-        <div className="grid md:grid-cols-2 gap-4">
-          {otherSkills.map((category) => (
+    <section id="skills" className="py-16">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold text-primary mb-12 text-center">Skills & Expertise</h2>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillCategories.map((category) => (
             <Card 
               key={category.title} 
-              className="bg-card/50 backdrop-blur-sm border-border hover:bg-card/70 transition-all duration-300"
+              className={`bg-gradient-to-br ${category.color} backdrop-blur-sm border-border hover:scale-105 transition-all duration-300`}
             >
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm flex items-center gap-2">
-                  <span className="text-lg">{category.icon}</span>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center gap-3">
+                  <span className="text-2xl">{category.icon}</span>
                   {category.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap gap-1">
+                <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <Badge 
                       key={skill} 
                       variant="secondary" 
-                      className="text-xs bg-primary/20 text-primary border-primary/30"
+                      className="bg-primary/20 text-primary border-primary/30 hover:bg-primary hover:text-primary-foreground transition-colors"
                     >
                       {skill}
                     </Badge>
@@ -102,20 +75,22 @@ const Skills = () => {
             </Card>
           ))}
         </div>
-      </div>
 
-      {/* AWS Certification */}
-      <Card className="bg-gradient-to-r from-primary/10 to-teal-500/10 border-primary/30">
-        <CardContent className="p-4">
-          <div className="flex items-center gap-3">
-            <div className="text-2xl">🏆</div>
-            <div>
-              <h4 className="font-semibold text-primary">AWS Certification</h4>
-              <p className="text-sm text-muted-foreground">UTL Technologies</p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+        {/* AWS Certification Highlight */}
+        <div className="mt-12 text-center">
+          <Card className="bg-gradient-to-r from-primary/20 to-teal-500/20 border-primary/30 max-w-md mx-auto">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-center gap-4">
+                <div className="text-3xl">🏆</div>
+                <div>
+                  <h4 className="font-semibold text-primary text-lg">AWS Certified</h4>
+                  <p className="text-sm text-muted-foreground">UTL Technologies</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </section>
   );
 };
