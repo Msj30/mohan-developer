@@ -1,38 +1,30 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { GraduationCap, Code, Award, MapPin, Target, Users, Lightbulb } from 'lucide-react';
-
 const About = () => {
-  const highlights = [
-    {
-      icon: Target,
-      title: "Mission",
-      description: "Creating digital solutions that make a real impact",
-      color: "text-primary",
-      bgColor: "from-primary/20 to-teal-500/20",
-      borderColor: "border-primary/30"
-    },
-    {
-      icon: Users,
-      title: "Collaboration",
-      description: "Building meaningful connections through technology",
-      color: "text-green-400",
-      bgColor: "from-green-500/20 to-emerald-500/20",
-      borderColor: "border-green-500/30"
-    },
-    {
-      icon: Lightbulb,
-      title: "Innovation",
-      description: "Turning creative ideas into functional realities",
-      color: "text-orange-400",
-      bgColor: "from-orange-500/20 to-yellow-500/20",
-      borderColor: "border-orange-500/30"
-    }
-  ];
-
-  return (
-    <section id="about" className="py-20 relative overflow-hidden">
+  const highlights = [{
+    icon: Target,
+    title: "Mission",
+    description: "Creating digital solutions that make a real impact",
+    color: "text-primary",
+    bgColor: "from-primary/20 to-teal-500/20",
+    borderColor: "border-primary/30"
+  }, {
+    icon: Users,
+    title: "Collaboration",
+    description: "Building meaningful connections through technology",
+    color: "text-green-400",
+    bgColor: "from-green-500/20 to-emerald-500/20",
+    borderColor: "border-green-500/30"
+  }, {
+    icon: Lightbulb,
+    title: "Innovation",
+    description: "Turning creative ideas into functional realities",
+    color: "text-orange-400",
+    bgColor: "from-orange-500/20 to-yellow-500/20",
+    borderColor: "border-orange-500/30"
+  }];
+  return <section id="about" className="py-20 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-primary/10 to-teal-500/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
@@ -80,9 +72,7 @@ const About = () => {
             <CardContent className="text-center space-y-2">
               <p className="font-semibold text-foreground">Full Stack Developer</p>
               <p className="text-muted-foreground">Web & Mobile Solutions</p>
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                2+ Years
-              </Badge>
+              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">FRESHER</Badge>
             </CardContent>
           </Card>
 
@@ -137,11 +127,7 @@ const About = () => {
 
           {/* Right Side - Highlights */}
           <div className="space-y-6">
-            {highlights.map((highlight, index) => (
-              <Card 
-                key={highlight.title} 
-                className={`bg-gradient-to-br ${highlight.bgColor} ${highlight.borderColor} border-2 hover:scale-105 transition-all duration-300`}
-              >
+            {highlights.map((highlight, index) => <Card key={highlight.title} className={`bg-gradient-to-br ${highlight.bgColor} ${highlight.borderColor} border-2 hover:scale-105 transition-all duration-300`}>
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <div className={`bg-gradient-to-br ${highlight.bgColor} p-4 rounded-2xl border-2 ${highlight.borderColor}`}>
@@ -153,13 +139,10 @@ const About = () => {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
