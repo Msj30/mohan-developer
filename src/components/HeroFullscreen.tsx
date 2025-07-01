@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import { ArrowDown, Github, Linkedin, Mail, Phone } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, Phone, FileText, Download } from 'lucide-react';
+
 const HeroFullscreen = () => {
   const scrollToAbout = () => {
     const element = document.getElementById('about');
@@ -60,7 +61,16 @@ const HeroFullscreen = () => {
     position: "bottom-24 right-16",
     delay: "1400ms"
   }];
-  return <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
+  const handleResumeDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/lovable-uploads/8b5e247c-e6a3-4678-a3ec-05012b2b1f7c.png';
+    link.download = 'Mohan_S_Resume.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  return (
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
@@ -73,13 +83,9 @@ const HeroFullscreen = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-none">
-                <span className="block text-primary">WEB</span>
-                <span className="block text-foreground">DEVELOPER</span>
+                <span className="block text-primary">DEVELOPER</span>
+                <span className="block text-foreground">Mohan S</span>
               </h1>
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-1 bg-gradient-to-r from-primary to-teal-500"></div>
-                <p className="text-muted-foreground text-5xl">Mohan S</p>
-              </div>
             </div>
 
             <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
@@ -103,7 +109,7 @@ const HeroFullscreen = () => {
               </Button>
             </div>
 
-            {/* Social Links */}
+            {/* Social Links with Resume Button */}
             <div className="flex gap-4 pt-4">
               <a href="https://github.com/Msj30" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
                 <Github className="w-6 h-6" />
@@ -117,6 +123,34 @@ const HeroFullscreen = () => {
               <a href="tel:+918861079209" className="text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="w-6 h-6" />
               </a>
+              
+              {/* Resume Button */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="text-muted-foreground hover:text-primary transition-colors">
+                    <FileText className="w-6 h-6" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-2xl font-bold text-foreground">Resume - Mohan S</h3>
+                      <Button 
+                        onClick={handleResumeDownload}
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                      >
+                        <Download className="w-4 h-4 mr-2" />
+                        Download
+                      </Button>
+                    </div>
+                    <img 
+                      src="/lovable-uploads/8b5e247c-e6a3-4678-a3ec-05012b2b1f7c.png" 
+                      alt="Mohan S Resume" 
+                      className="w-full h-auto rounded-lg border border-border" 
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
 
@@ -126,31 +160,45 @@ const HeroFullscreen = () => {
             <Dialog>
               <DialogTrigger asChild>
                 <div className="relative z-10 w-80 h-80 rounded-full overflow-hidden border-4 border-primary shadow-2xl cursor-pointer hover:scale-105 transition-transform duration-500 bg-gradient-to-br from-primary/20 to-teal-500/20">
-                  <img src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" alt="Mohan S - Web Developer" className="w-full h-full object-cover" />
+                  <img 
+                    src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" 
+                    alt="Mohan S - Web Developer" 
+                    className="w-full h-full object-cover" 
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent"></div>
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-2xl">
-                <img src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" alt="Mohan S - Web Developer" className="w-full h-auto rounded-lg" />
+                <img 
+                  src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" 
+                  alt="Mohan S - Web Developer" 
+                  className="w-full h-auto rounded-lg" 
+                />
               </DialogContent>
             </Dialog>
 
             {/* Floating Skill Badges */}
-            {skillBadges.map((skill, index) => <Badge key={skill.name} className={`absolute ${skill.position} bg-gradient-to-r from-primary/20 to-teal-500/20 text-primary border-primary/30 border-2 px-4 py-2 text-sm font-semibold hover:scale-110 transition-all duration-500 cursor-default animate-pulse`} style={{
-            animationDelay: skill.delay,
-            animationDuration: '3s'
-          }}>
+            {skillBadges.map((skill, index) => (
+              <Badge 
+                key={skill.name} 
+                className={`absolute ${skill.position} bg-gradient-to-r from-primary/20 to-teal-500/20 text-primary border-primary/30 border-2 px-4 py-2 text-sm font-semibold hover:scale-110 transition-all duration-500 cursor-default animate-pulse`}
+                style={{
+                  animationDelay: skill.delay,
+                  animationDuration: '3s'
+                }}
+              >
                 {skill.name}
-              </Badge>)}
+              </Badge>
+            ))}
 
             {/* Decorative Elements */}
             <div className="absolute top-0 right-0 w-32 h-32 border-4 border-primary/30 rounded-full animate-spin" style={{
-            animationDuration: '20s'
-          }}></div>
+              animationDuration: '20s'
+            }}></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 border-4 border-teal-500/30 rounded-full animate-spin" style={{
-            animationDuration: '15s',
-            animationDirection: 'reverse'
-          }}></div>
+              animationDuration: '15s',
+              animationDirection: 'reverse'
+            }}></div>
           </div>
         </div>
 
@@ -162,6 +210,8 @@ const HeroFullscreen = () => {
           </Button>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroFullscreen;
