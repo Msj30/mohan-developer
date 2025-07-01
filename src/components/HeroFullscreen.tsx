@@ -95,7 +95,7 @@ const HeroFullscreen = () => {
 
             <div className="flex items-center gap-4">
               <Badge className="bg-green-500/20 text-green-400 border-green-500/30 px-4 py-2 text-sm">
-                Available for work
+                Hire Me
               </Badge>
               <span className="text-muted-foreground">📍 Bangalore, India</span>
             </div>
@@ -125,32 +125,35 @@ const HeroFullscreen = () => {
               </a>
               
               {/* Resume Button */}
-              <Dialog>
-                <DialogTrigger asChild>
-                  <button className="text-muted-foreground hover:text-primary transition-colors">
-                    <FileText className="w-6 h-6" />
-                  </button>
-                </DialogTrigger>
-                <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-2xl font-bold text-foreground">Resume - Mohan S</h3>
-                      <Button 
-                        onClick={handleResumeDownload}
-                        className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                      >
-                        <Download className="w-4 h-4 mr-2" />
-                        Download
-                      </Button>
+              <div className="flex flex-col items-center gap-1">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button className="text-muted-foreground hover:text-primary transition-colors">
+                      <FileText className="w-6 h-6" />
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-2xl font-bold text-foreground">Resume - Mohan S</h3>
+                        <Button 
+                          onClick={handleResumeDownload}
+                          className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                        >
+                          <Download className="w-4 h-4 mr-2" />
+                          Download
+                        </Button>
+                      </div>
+                      <img 
+                        src="/lovable-uploads/8b5e247c-e6a3-4678-a3ec-05012b2b1f7c.png" 
+                        alt="Mohan S Resume" 
+                        className="w-full h-auto rounded-lg border border-border" 
+                      />
                     </div>
-                    <img 
-                      src="/lovable-uploads/8b5e247c-e6a3-4678-a3ec-05012b2b1f7c.png" 
-                      alt="Mohan S Resume" 
-                      className="w-full h-auto rounded-lg border border-border" 
-                    />
-                  </div>
-                </DialogContent>
-              </Dialog>
+                  </DialogContent>
+                </Dialog>
+                <span className="text-xs text-muted-foreground">Resume</span>
+              </div>
             </div>
           </div>
 
