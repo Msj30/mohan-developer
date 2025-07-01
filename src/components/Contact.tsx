@@ -2,7 +2,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Phone, Mail, Github, Linkedin, MapPin, Send, MessageCircle } from 'lucide-react';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Phone, Mail, Github, Linkedin, MapPin, Send, MessageCircle, Download, FileText } from 'lucide-react';
 
 const Contact = () => {
   const contactMethods = [
@@ -53,6 +54,15 @@ const Contact = () => {
       borderColor: "border-gray-500/30"
     }
   ];
+
+  const handleResumeDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/lovable-uploads/8b5e247c-e6a3-4678-a3ec-05012b2b1f7c.png';
+    link.download = 'Mohan_S_Resume.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
@@ -149,15 +159,47 @@ const Contact = () => {
                 </p>
                 
                 <div className="space-y-4">
-                  <Button 
-                    className="w-full bg-gradient-to-r from-primary to-teal-500 hover:from-primary/90 hover:to-teal-500/90 text-white py-6 text-lg font-black shadow-lg transform hover:scale-105 transition-all duration-300"
-                    asChild
-                  >
-                    <a href="mailto:mohanmsj30@gmail.com">
-                      <Send className="w-5 h-5 mr-2" />
-                      SEND EMAIL
-                    </a>
-                  </Button>
+                  <div className="flex gap-4">
+                    <Button 
+                      className="flex-1 bg-gradient-to-r from-primary to-teal-500 hover:from-primary/90 hover:to-teal-500/90 text-white py-6 text-lg font-black shadow-lg transform hover:scale-105 transition-all duration-300"
+                      asChild
+                    >
+                      <a href="mailto:mohanmsj30@gmail.com">
+                        <Send className="w-5 h-5 mr-2" />
+                        LET'S TALK
+                      </a>
+                    </Button>
+                    
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-6 text-lg font-black shadow-lg transform hover:scale-105 transition-all duration-300"
+                        >
+                          <FileText className="w-5 h-5 mr-2" />
+                          RESUME
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[90vh] overflow-auto">
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <h3 className="text-2xl font-bold text-foreground">Resume - Mohan S</h3>
+                            <Button 
+                              onClick={handleResumeDownload}
+                              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                            >
+                              <Download className="w-4 h-4 mr-2" />
+                              Download
+                            </Button>
+                          </div>
+                          <img 
+                            src="/lovable-uploads/8b5e247c-e6a3-4678-a3ec-05012b2b1f7c.png" 
+                            alt="Mohan S Resume" 
+                            className="w-full h-auto rounded-lg border border-border" 
+                          />
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
                   
                   <Button 
                     variant="outline"
