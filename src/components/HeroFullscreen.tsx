@@ -83,7 +83,7 @@ const HeroFullscreen = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-none">
-                <span className="block text-primary">DEVELOPER</span>
+                <span className="block text-primary">WEB DEVELOPER</span>
                 <span className="block text-foreground">Mohan S</span>
               </h1>
             </div>
