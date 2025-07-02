@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import { ExternalLink, Github, Eye, Zap } from 'lucide-react';
+import { ExternalLink, Github, Eye, Zap, Trophy } from 'lucide-react';
 import ProjectsList from './ProjectsList';
 
 const Projects = () => {
@@ -25,6 +25,18 @@ const Projects = () => {
       category: "MOBILE EXPERIENCE",
       icon: "📱",
       featured: true
+    }
+  ];
+
+  const hackathons = [
+    {
+      title: "SBI HACKATHON",
+      description: "Created an AI chatbot solution for banking customers, providing intelligent assistance and automated query resolution with natural language processing capabilities.",
+      tech: ["AI/ML", "Natural Language Processing", "Chatbot Development", "Banking Solutions"],
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      category: "HACKATHON WINNER",
+      icon: "🤖",
+      featured: false
     }
   ];
 
@@ -124,6 +136,82 @@ const Projects = () => {
               </div>
             </Card>
           ))}
+        </div>
+
+        {/* Hackathons Section */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <h3 className="text-4xl font-black text-foreground mb-4 flex items-center justify-center gap-3">
+              <Trophy className="w-8 h-8 text-yellow-500" />
+              HACKATHONS
+            </h3>
+            <p className="text-lg text-muted-foreground">Competition achievements and innovative solutions</p>
+          </div>
+          
+          <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto">
+            {hackathons.map((hackathon, index) => (
+              <Card 
+                key={hackathon.title} 
+                className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 backdrop-blur-sm border-2 border-yellow-500/30 hover:border-yellow-500/50 hover:scale-105 transition-all duration-500 group overflow-hidden"
+              >
+                {/* Hackathon Image */}
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src={hackathon.image}
+                    alt={hackathon.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                  
+                  {/* Hackathon Icon */}
+                  <div className="absolute top-4 left-4">
+                    <div className="bg-yellow-500/20 backdrop-blur-sm rounded-full p-3 border border-yellow-500/30">
+                      <span className="text-2xl">{hackathon.icon}</span>
+                    </div>
+                  </div>
+
+                  {/* Trophy Icon */}
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-yellow-500/20 backdrop-blur-sm rounded-full p-3 border border-yellow-500/30">
+                      <Trophy className="w-5 h-5 text-yellow-400" />
+                    </div>
+                  </div>
+
+                  {/* Category Badge */}
+                  <div className="absolute bottom-4 left-4">
+                    <Badge className="bg-yellow-500/20 backdrop-blur-sm text-yellow-400 border-yellow-500/30 font-black text-sm px-4 py-2">
+                      {hackathon.category}
+                    </Badge>
+                  </div>
+                </div>
+                
+                {/* Hackathon Content */}
+                <div className="p-6 space-y-4">
+                  <div>
+                    <CardTitle className="text-xl font-black text-yellow-400 mb-3 group-hover:text-orange-400 transition-colors duration-300">
+                      {hackathon.title}
+                    </CardTitle>
+                    <p className="text-muted-foreground leading-relaxed text-sm">
+                      {hackathon.description}
+                    </p>
+                  </div>
+                  
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2">
+                    {hackathon.tech.map((tech, techIndex) => (
+                      <Badge 
+                        key={tech} 
+                        variant="outline" 
+                        className="text-xs border-yellow-500/30 text-foreground hover:bg-yellow-500 hover:text-black transition-all duration-300"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
 
         {/* View All Projects Button */}
