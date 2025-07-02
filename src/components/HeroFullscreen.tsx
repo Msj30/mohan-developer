@@ -1,7 +1,9 @@
+
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { ArrowDown, Github, Linkedin, Mail, Phone, FileText, Download } from 'lucide-react';
+
 const HeroFullscreen = () => {
   const scrollToAbout = () => {
     const element = document.getElementById('about');
@@ -11,6 +13,7 @@ const HeroFullscreen = () => {
       });
     }
   };
+
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
     if (element) {
@@ -19,6 +22,7 @@ const HeroFullscreen = () => {
       });
     }
   };
+
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
@@ -27,39 +31,50 @@ const HeroFullscreen = () => {
       });
     }
   };
-  const skillBadges = [{
-    name: "React.js",
-    position: "top-16 left-8",
-    delay: "0ms"
-  }, {
-    name: "Flutter",
-    position: "top-32 right-12",
-    delay: "200ms"
-  }, {
-    name: "Python",
-    position: "top-48 left-16",
-    delay: "400ms"
-  }, {
-    name: "AWS",
-    position: "bottom-32 right-8",
-    delay: "600ms"
-  }, {
-    name: "Node.js",
-    position: "bottom-48 left-12",
-    delay: "800ms"
-  }, {
-    name: "UI/UX",
-    position: "top-24 right-24",
-    delay: "1000ms"
-  }, {
-    name: "Firebase",
-    position: "bottom-16 left-24",
-    delay: "1200ms"
-  }, {
-    name: "Docker",
-    position: "bottom-24 right-16",
-    delay: "1400ms"
-  }];
+
+  const skillBadges = [
+    {
+      name: "React.js",
+      position: "top-16 left-8",
+      delay: "0ms"
+    },
+    {
+      name: "Flutter",
+      position: "top-32 right-12",
+      delay: "200ms"
+    },
+    {
+      name: "Python",
+      position: "top-48 left-16",
+      delay: "400ms"
+    },
+    {
+      name: "AWS",
+      position: "bottom-32 right-8",
+      delay: "600ms"
+    },
+    {
+      name: "Node.js",
+      position: "bottom-48 left-12",
+      delay: "800ms"
+    },
+    {
+      name: "UI/UX",
+      position: "top-24 right-24",
+      delay: "1000ms"
+    },
+    {
+      name: "Firebase",
+      position: "bottom-16 left-24",
+      delay: "1200ms"
+    },
+    {
+      name: "Docker",
+      position: "bottom-24 right-16",
+      delay: "1400ms"
+    }
+  ];
+
   const handleResumeDownload = () => {
     const link = document.createElement('a');
     link.href = '/lovable-uploads/8b5e247c-e6a3-4678-a3ec-05012b2b1f7c.png';
@@ -68,7 +83,9 @@ const HeroFullscreen = () => {
     link.click();
     document.body.removeChild(link);
   };
-  return <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
+
+  return (
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
@@ -81,7 +98,10 @@ const HeroFullscreen = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-none">
-                <span className="block text-primary text-8xl">WEB DEVELOPER</span>
+                <span className="block text-8xl">
+                  <span className="text-white">WEB</span>{' '}
+                  <span className="text-primary">DEVELOPER</span>
+                </span>
               </h1>
             </div>
 
@@ -166,16 +186,28 @@ const HeroFullscreen = () => {
             <h2 className="text-7xl font-black text-foreground z-10 relative">Mohan S</h2>
 
             {/* Floating Skill Badges */}
-            {skillBadges.map((skill, index) => {})}
+            {skillBadges.map((skill, index) => (
+              <Badge
+                key={index}
+                className={`absolute ${skill.position} bg-primary/20 text-primary border-primary/30 animate-bounce`}
+                style={{
+                  animationDelay: skill.delay,
+                  animationDuration: '2s',
+                  animationIterationCount: 'infinite'
+                }}
+              >
+                {skill.name}
+              </Badge>
+            ))}
 
             {/* Decorative Elements */}
             <div className="absolute top-0 right-0 w-32 h-32 border-4 border-primary/30 rounded-full animate-spin" style={{
-            animationDuration: '20s'
-          }}></div>
+              animationDuration: '20s'
+            }}></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 border-4 border-teal-500/30 rounded-full animate-spin" style={{
-            animationDuration: '15s',
-            animationDirection: 'reverse'
-          }}></div>
+              animationDuration: '15s',
+              animationDirection: 'reverse'
+            }}></div>
           </div>
         </div>
 
@@ -187,6 +219,8 @@ const HeroFullscreen = () => {
           </Button>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroFullscreen;
