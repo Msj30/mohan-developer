@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
@@ -37,14 +38,9 @@ const Skills = () => {
     }
   ];
 
-  const otherSkills = [
-    "Linux",
-    "UI/UX Design",
-    "Git & GitHub",
-    "Problem Solving",
-    "Team Collaboration",
-    "Agile Methodology"
-  ];
+  const otherSkills = ["Linux", "UI/UX Design", "Git & GitHub"];
+
+  const softSkills = ["Problem Solving", "Team Collaboration", "Agile Methodology"];
 
   return (
     <section id="skills" className="py-20 relative overflow-hidden">
@@ -113,6 +109,32 @@ const Skills = () => {
             <CardContent className="p-8">
               <div className="flex flex-wrap justify-center gap-4">
                 {otherSkills.map((skill, index) => (
+                  <Badge 
+                    key={skill}
+                    className="bg-background/80 text-foreground border-border hover:bg-primary hover:text-primary-foreground transition-all duration-300 px-4 py-2 text-sm font-semibold"
+                    style={{
+                      animationDelay: `${index * 100}ms`
+                    }}
+                  >
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Soft Skills Section */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <h3 className="text-4xl font-black text-foreground mb-4">SOFT SKILLS</h3>
+            <p className="text-lg text-muted-foreground">Personal skills that enhance my professional work</p>
+          </div>
+          
+          <Card className="bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border-purple-500/30 border-2 hover:scale-105 transition-all duration-300">
+            <CardContent className="p-8">
+              <div className="flex flex-wrap justify-center gap-4">
+                {softSkills.map((skill, index) => (
                   <Badge 
                     key={skill}
                     className="bg-background/80 text-foreground border-border hover:bg-primary hover:text-primary-foreground transition-all duration-300 px-4 py-2 text-sm font-semibold"

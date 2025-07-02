@@ -2,10 +2,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, Eye } from 'lucide-react';
+import { ExternalLink, Github, Eye, Trophy } from 'lucide-react';
 
 const ProjectsList = () => {
-  const allProjects = [
+  const featuredProjects = [
     {
       title: "ALTERNATIVE OF OTP",
       description: "Revolutionary facial-verification login system replacing traditional OTP authentication with secure biometric verification using advanced computer vision technology.",
@@ -23,41 +23,17 @@ const ProjectsList = () => {
       category: "MOBILE EXPERIENCE",
       icon: "📱",
       featured: true
-    },
+    }
+  ];
+
+  const hackathons = [
     {
-      title: "E-COMMERCE PLATFORM",
-      description: "Full-stack e-commerce solution with modern UI, payment integration, inventory management, and admin dashboard built with React and Node.js.",
-      tech: ["React.js", "Node.js", "MongoDB", "Stripe", "Express.js"],
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      category: "FULL STACK",
-      icon: "🛒",
-      featured: false
-    },
-    {
-      title: "WEATHER DASHBOARD",
-      description: "Interactive weather dashboard with real-time data visualization, location-based forecasts, and responsive design for all devices.",
-      tech: ["React.js", "Weather API", "Chart.js", "Tailwind CSS"],
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      category: "DATA VISUALIZATION",
-      icon: "🌤️",
-      featured: false
-    },
-    {
-      title: "TASK MANAGEMENT SYSTEM",
-      description: "Collaborative task management application with real-time updates, team collaboration features, and project tracking capabilities.",
-      tech: ["React.js", "Firebase", "Material-UI", "Real-time DB"],
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      category: "PRODUCTIVITY",
-      icon: "📋",
-      featured: false
-    },
-    {
-      title: "PORTFOLIO WEBSITE",
-      description: "Modern, responsive portfolio website showcasing projects and skills with smooth animations and interactive elements.",
-      tech: ["React.js", "Tailwind CSS", "Framer Motion", "Vercel"],
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-      category: "PERSONAL PROJECT",
-      icon: "💼",
+      title: "SBI HACKATHON",
+      description: "Created an AI chatbot solution for banking customers, providing intelligent assistance and automated query resolution with natural language processing capabilities.",
+      tech: ["AI/ML", "Natural Language Processing", "Chatbot Development", "Banking Solutions"],
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      category: "HACKATHON WINNER",
+      icon: "🤖",
       featured: false
     }
   ];
@@ -74,17 +50,17 @@ const ProjectsList = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-6xl md:text-8xl font-black text-primary mb-6">
-            ALL PROJECTS
+            FEATURED PROJECTS
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Complete collection of my work showcasing diverse skills and technologies
+            Key projects and hackathon achievements showcasing innovation and technical expertise
           </p>
           <div className="w-32 h-1 bg-gradient-to-r from-primary to-teal-500 mx-auto rounded-full mt-6"></div>
         </div>
         
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {allProjects.map((project, index) => (
+        {/* Featured Projects Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {featuredProjects.map((project, index) => (
             <Card 
               key={project.title} 
               className="bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-sm border-2 border-primary/30 hover:border-primary/50 hover:scale-105 transition-all duration-500 group overflow-hidden"
@@ -136,7 +112,7 @@ const ProjectsList = () => {
                 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2">
-                  {project.tech.slice(0, 3).map((tech, techIndex) => (
+                  {project.tech.slice(0, 4).map((tech, techIndex) => (
                     <Badge 
                       key={tech} 
                       variant="outline" 
@@ -145,12 +121,12 @@ const ProjectsList = () => {
                       {tech}
                     </Badge>
                   ))}
-                  {project.tech.length > 3 && (
+                  {project.tech.length > 4 && (
                     <Badge 
                       variant="outline" 
                       className="text-xs border-primary/30 text-muted-foreground"
                     >
-                      +{project.tech.length - 3}
+                      +{project.tech.length - 4}
                     </Badge>
                   )}
                 </div>
@@ -163,6 +139,82 @@ const ProjectsList = () => {
               </div>
             </Card>
           ))}
+        </div>
+
+        {/* Hackathons Section */}
+        <div className="mb-8">
+          <div className="text-center mb-8">
+            <h3 className="text-4xl font-black text-foreground mb-4 flex items-center justify-center gap-3">
+              <Trophy className="w-8 h-8 text-yellow-500" />
+              HACKATHONS
+            </h3>
+            <p className="text-lg text-muted-foreground">Competition achievements and innovative solutions</p>
+          </div>
+          
+          <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto">
+            {hackathons.map((hackathon, index) => (
+              <Card 
+                key={hackathon.title} 
+                className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 backdrop-blur-sm border-2 border-yellow-500/30 hover:border-yellow-500/50 hover:scale-105 transition-all duration-500 group overflow-hidden"
+              >
+                {/* Hackathon Image */}
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src={hackathon.image}
+                    alt={hackathon.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                  
+                  {/* Hackathon Icon */}
+                  <div className="absolute top-4 left-4">
+                    <div className="bg-yellow-500/20 backdrop-blur-sm rounded-full p-3 border border-yellow-500/30">
+                      <span className="text-2xl">{hackathon.icon}</span>
+                    </div>
+                  </div>
+
+                  {/* Trophy Icon */}
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-yellow-500/20 backdrop-blur-sm rounded-full p-3 border border-yellow-500/30">
+                      <Trophy className="w-5 h-5 text-yellow-400" />
+                    </div>
+                  </div>
+
+                  {/* Category Badge */}
+                  <div className="absolute bottom-4 left-4">
+                    <Badge className="bg-yellow-500/20 backdrop-blur-sm text-yellow-400 border-yellow-500/30 font-black text-xs px-3 py-1">
+                      {hackathon.category}
+                    </Badge>
+                  </div>
+                </div>
+                
+                {/* Hackathon Content */}
+                <div className="p-6 space-y-4">
+                  <div>
+                    <CardTitle className="text-xl font-black text-yellow-400 mb-3 group-hover:text-orange-400 transition-colors duration-300">
+                      {hackathon.title}
+                    </CardTitle>
+                    <p className="text-muted-foreground leading-relaxed text-sm">
+                      {hackathon.description}
+                    </p>
+                  </div>
+                  
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2">
+                    {hackathon.tech.map((tech, techIndex) => (
+                      <Badge 
+                        key={tech} 
+                        variant="outline" 
+                        className="text-xs border-yellow-500/30 text-foreground hover:bg-yellow-500 hover:text-black transition-all duration-300"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
