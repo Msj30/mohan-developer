@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { ArrowDown, Github, Linkedin, Mail, Phone, FileText, Download } from 'lucide-react';
+
 const HeroFullscreen = () => {
   const scrollToAbout = () => {
     const element = document.getElementById('about');
@@ -82,7 +83,6 @@ const HeroFullscreen = () => {
             <div className="space-y-4">
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-none">
                 <span className="block text-primary text-8xl">WEB DEVELOPER</span>
-                <span className="block text-foreground text-7xl">Mohan S</span>
               </h1>
             </div>
 
@@ -149,7 +149,7 @@ const HeroFullscreen = () => {
           </div>
 
           {/* Right Side - Profile with Floating Badges */}
-          <div className="relative flex justify-center items-center min-h-[600px]">
+          <div className="relative flex flex-col justify-center items-center min-h-[600px] space-y-6">
             {/* Central Profile Image */}
             <Dialog>
               <DialogTrigger asChild>
@@ -162,6 +162,9 @@ const HeroFullscreen = () => {
                 <img src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" alt="Mohan S - Web Developer" className="w-full h-auto rounded-lg" />
               </DialogContent>
             </Dialog>
+
+            {/* Name below profile picture */}
+            <h2 className="text-7xl font-black text-foreground z-10 relative">Mohan S</h2>
 
             {/* Floating Skill Badges */}
             {skillBadges.map((skill, index) => <Badge key={skill.name} className={`absolute ${skill.position} bg-gradient-to-r from-primary/20 to-teal-500/20 text-primary border-primary/30 border-2 px-4 py-2 text-sm font-semibold hover:scale-110 transition-all duration-500 cursor-default animate-pulse`} style={{
@@ -192,4 +195,5 @@ const HeroFullscreen = () => {
       </div>
     </section>;
 };
+
 export default HeroFullscreen;
