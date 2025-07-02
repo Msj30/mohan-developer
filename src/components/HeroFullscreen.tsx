@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { ArrowDown, Github, Linkedin, Mail, Phone, FileText, Download } from 'lucide-react';
-
 const HeroFullscreen = () => {
   const scrollToAbout = () => {
     const element = document.getElementById('about');
@@ -167,12 +166,7 @@ const HeroFullscreen = () => {
             <h2 className="text-7xl font-black text-foreground z-10 relative">Mohan S</h2>
 
             {/* Floating Skill Badges */}
-            {skillBadges.map((skill, index) => <Badge key={skill.name} className={`absolute ${skill.position} bg-gradient-to-r from-primary/20 to-teal-500/20 text-primary border-primary/30 border-2 px-4 py-2 text-sm font-semibold hover:scale-110 transition-all duration-500 cursor-default animate-pulse`} style={{
-            animationDelay: skill.delay,
-            animationDuration: '3s'
-          }}>
-                {skill.name}
-              </Badge>)}
+            {skillBadges.map((skill, index) => {})}
 
             {/* Decorative Elements */}
             <div className="absolute top-0 right-0 w-32 h-32 border-4 border-primary/30 rounded-full animate-spin" style={{
@@ -195,5 +189,4 @@ const HeroFullscreen = () => {
       </div>
     </section>;
 };
-
 export default HeroFullscreen;
