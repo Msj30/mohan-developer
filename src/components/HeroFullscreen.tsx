@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { ArrowDown, Github, Linkedin, Mail, Phone, FileText, Download } from 'lucide-react';
-
 const HeroFullscreen = () => {
   const scrollToAbout = () => {
     const element = document.getElementById('about');
@@ -69,8 +68,7 @@ const HeroFullscreen = () => {
     link.click();
     document.body.removeChild(link);
   };
-  return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
+  return <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
@@ -83,8 +81,8 @@ const HeroFullscreen = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-none">
-                <span className="block text-primary">WEB DEVELOPER</span>
-                <span className="block text-foreground">Mohan S</span>
+                <span className="block text-primary text-8xl">WEB DEVELOPER</span>
+                <span className="block text-foreground text-7xl">Mohan S</span>
               </h1>
             </div>
 
@@ -136,19 +134,12 @@ const HeroFullscreen = () => {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <h3 className="text-2xl font-bold text-foreground">Resume - Mohan S</h3>
-                        <Button 
-                          onClick={handleResumeDownload}
-                          className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                        >
+                        <Button onClick={handleResumeDownload} className="bg-primary hover:bg-primary/90 text-primary-foreground">
                           <Download className="w-4 h-4 mr-2" />
                           Download
                         </Button>
                       </div>
-                      <img 
-                        src="/lovable-uploads/8b5e247c-e6a3-4678-a3ec-05012b2b1f7c.png" 
-                        alt="Mohan S Resume" 
-                        className="w-full h-auto rounded-lg border border-border" 
-                      />
+                      <img src="/lovable-uploads/8b5e247c-e6a3-4678-a3ec-05012b2b1f7c.png" alt="Mohan S Resume" className="w-full h-auto rounded-lg border border-border" />
                     </div>
                   </DialogContent>
                 </Dialog>
@@ -163,45 +154,31 @@ const HeroFullscreen = () => {
             <Dialog>
               <DialogTrigger asChild>
                 <div className="relative z-10 w-80 h-80 rounded-full overflow-hidden border-4 border-primary shadow-2xl cursor-pointer hover:scale-105 transition-transform duration-500 bg-gradient-to-br from-primary/20 to-teal-500/20">
-                  <img 
-                    src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" 
-                    alt="Mohan S - Web Developer" 
-                    className="w-full h-full object-cover" 
-                  />
+                  <img src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" alt="Mohan S - Web Developer" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent"></div>
                 </div>
               </DialogTrigger>
               <DialogContent className="max-w-2xl">
-                <img 
-                  src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" 
-                  alt="Mohan S - Web Developer" 
-                  className="w-full h-auto rounded-lg" 
-                />
+                <img src="/lovable-uploads/c313d97d-1440-49a0-8455-b2c858bf4361.png" alt="Mohan S - Web Developer" className="w-full h-auto rounded-lg" />
               </DialogContent>
             </Dialog>
 
             {/* Floating Skill Badges */}
-            {skillBadges.map((skill, index) => (
-              <Badge 
-                key={skill.name} 
-                className={`absolute ${skill.position} bg-gradient-to-r from-primary/20 to-teal-500/20 text-primary border-primary/30 border-2 px-4 py-2 text-sm font-semibold hover:scale-110 transition-all duration-500 cursor-default animate-pulse`}
-                style={{
-                  animationDelay: skill.delay,
-                  animationDuration: '3s'
-                }}
-              >
+            {skillBadges.map((skill, index) => <Badge key={skill.name} className={`absolute ${skill.position} bg-gradient-to-r from-primary/20 to-teal-500/20 text-primary border-primary/30 border-2 px-4 py-2 text-sm font-semibold hover:scale-110 transition-all duration-500 cursor-default animate-pulse`} style={{
+            animationDelay: skill.delay,
+            animationDuration: '3s'
+          }}>
                 {skill.name}
-              </Badge>
-            ))}
+              </Badge>)}
 
             {/* Decorative Elements */}
             <div className="absolute top-0 right-0 w-32 h-32 border-4 border-primary/30 rounded-full animate-spin" style={{
-              animationDuration: '20s'
-            }}></div>
+            animationDuration: '20s'
+          }}></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 border-4 border-teal-500/30 rounded-full animate-spin" style={{
-              animationDuration: '15s',
-              animationDirection: 'reverse'
-            }}></div>
+            animationDuration: '15s',
+            animationDirection: 'reverse'
+          }}></div>
           </div>
         </div>
 
@@ -213,8 +190,6 @@ const HeroFullscreen = () => {
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroFullscreen;
