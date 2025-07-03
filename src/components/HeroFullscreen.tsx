@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
@@ -111,7 +110,10 @@ const HeroFullscreen = () => {
             </p>
 
             <div className="flex items-center gap-4 transform translate-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30 px-4 py-2 text-sm hover:bg-green-500/30 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Badge 
+                onClick={scrollToContact}
+                className="bg-green-500/20 text-green-400 border-green-500/30 px-4 py-2 text-sm hover:bg-green-500/30 hover:scale-105 transition-all duration-300 cursor-pointer"
+              >
                 Hire Me
               </Badge>
               <span className="text-muted-foreground">📍 Bangalore, India</span>

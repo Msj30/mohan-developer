@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -15,7 +14,8 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
       category: "WEB INNOVATION",
       icon: "🔐",
-      featured: true
+      featured: true,
+      githubUrl: "https://github.com/Msj30/secure-shop-verify.git"
     },
     {
       title: "FLUTTER MOBILE APP",
@@ -39,6 +39,12 @@ const Projects = () => {
       featured: false
     }
   ];
+
+  const handleExploreProject = (project: typeof projects[0]) => {
+    if (project.githubUrl) {
+      window.open(project.githubUrl, '_blank');
+    }
+  };
 
   return (
     <section id="projects" className="py-20 relative overflow-hidden">
@@ -129,7 +135,10 @@ const Projects = () => {
                 </div>
 
                 {/* Explore Button */}
-                <Button className="w-full bg-gradient-to-r from-primary to-teal-500 hover:from-primary/90 hover:to-teal-500/90 text-white shadow-lg transform hover:scale-105 transition-all duration-300 font-semibold">
+                <Button 
+                  onClick={() => handleExploreProject(project)}
+                  className="w-full bg-gradient-to-r from-primary to-teal-500 hover:from-primary/90 hover:to-teal-500/90 text-white shadow-lg transform hover:scale-105 transition-all duration-300 font-semibold"
+                >
                   <ExternalLink className="w-4 h-4 mr-2" />
                   EXPLORE PROJECT
                 </Button>
